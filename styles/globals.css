@@ -1,3 +1,10 @@
+:root {
+  --text-purple: purple;
+  --text-purple-dark: darkblue;
+  --text-black: black;
+  --text-white-100: white;
+}
+
 html,
 body {
   padding: 0;
