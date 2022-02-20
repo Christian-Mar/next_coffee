@@ -5,7 +5,16 @@ import Banner from '../components/Banner';
 import coffeeStores from '../data/coffee-stores.json';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+export async function getStaticProps(context) {
+	return {
+		props: {
+			coffeeStores,
+		},
+	}
+}
+
+export default function Home(props) {
+	console.log("props", props)
 	const handleOnBannerBtnClick = () => {
 		console.log('hi, banner button');
 	};
@@ -26,8 +35,10 @@ export default function Home() {
 				<div className={styles.heroImage}>
 					<Image src='/hero.png' width={450} height={300} />
 				</div>
+				<h2 className={styles.heading2}>Toronto stores</h2>
 				<div className={styles.cardLayout}>
 					{coffeeStores.map(coffeeStore => {return ( <Card
+						key={coffeeStore.id}
 						className={styles.card}
 						name={coffeeStore.name}
 						imgUrl={coffeeStore.imgUrl}
